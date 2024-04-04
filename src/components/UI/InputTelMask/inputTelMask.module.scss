@@ -1,0 +1,30 @@
+@use './../../../styles/variables.scss' as mixin;
+.inputMask {
+	height: 90px;
+	font-size: mixin.$select-size;
+	border-radius: mixin.$selectButton-borderRaduis;
+	background-color: mixin.$input-background-color;
+	padding: 28px clamp(1.875rem, 1.131rem + 3.72vw, 3.875rem);
+
+	&::placeholder {
+		color: mixin.$buttonLight-text-color;
+	}
+	&:focus {
+		border: 1px solid #402b1e;
+		box-shadow: 3px 3px 5px #402b1e;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			border: 1px solid #402b1e;
+		}
+	}
+	@media (max-width: 500px) {
+		font-size: 22px;
+	}
+	@media (max-width: 420px) {
+		height: 46px !important;
+		padding-top: 13px;
+		padding-bottom: 13px;
+		font-size: 16px;
+	}
+}

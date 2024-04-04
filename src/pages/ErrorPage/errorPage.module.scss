@@ -1,0 +1,34 @@
+@use './../../styles/variables.scss' as mixin;
+
+.errorWrapper{
+	background-color: mixin.$block-background-color;
+}
+.boxImg{
+	position: relative !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 100px;
+}
+.img{
+	max-width: 1256px;
+	aspect-ratio: 1.57/1;
+}
+.labelWrapper{
+	position: absolute !important;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+.errorLabel{
+	font-size: 64px !important;
+	color: mixin.$main-text-color !important;
+	margin: 0 0 120px !important;
+}
+.errorNum{
+	font-size: 256px !important;
+	color: mixin.$main-text-color !important;
+	margin: 0 !important;
+
+}

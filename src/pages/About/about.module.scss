@@ -1,0 +1,77 @@
+.about {
+	padding: 47px 0 36px;
+}
+.body {
+	margin-bottom: clamp(3.125rem, 0.584rem + 12.71vw, 9.875rem);
+}
+.title {
+	font-size: clamp(1.875rem, 0.204rem + 8.35vw, 6rem) !important;
+	color: #372e24 !important;
+	text-align: center;
+	margin-bottom: clamp(1.25rem, -0.066rem + 6.58vw, 4.5rem) !important;
+}
+.newsWrapper {
+	gap: clamp(1.25rem, 0.05rem + 6vw, 4.438rem) !important;
+}
+.blockText {
+	max-width: 1404px;
+	margin-left: 124px;
+	gap: clamp(0.938rem, 0.561rem + 1.88vw, 1.938rem);
+
+	@media (max-width: 767.98px) {
+		margin-left: 0;
+	}
+}
+.subtitle {
+	color: #372e24 !important;
+	font-size: clamp(1.5rem, 0.935rem + 2.82vw, 3rem) !important;
+	margin: 0 !important;
+}
+.text {
+	font-size: clamp(1rem, 0.494rem + 2.53vw, 2.25rem);
+	font-weight: 300 !important;
+	color: #372e24 !important;
+	line-height: 1.2 !important;
+}
+.mainImg {
+	max-width: 100%;
+	aspect-ratio: 2.1/1;
+	margin-top: 28px;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.imgWrapper {
+	max-width: 700px;
+	aspect-ratio: 1/1;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.bodyPosBody {
+	gap: clamp(1.25rem, 0.05rem + 6vw, 4.438rem);
+}
+.newsBox {
+	gap: clamp(1.25rem, 0.05rem + 6vw, 4.438rem) !important;
+}
+.bodyPositiveWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.ecologyImgWrapper {
+	width: 100%;
+	aspect-ratio: 5.6/1;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}

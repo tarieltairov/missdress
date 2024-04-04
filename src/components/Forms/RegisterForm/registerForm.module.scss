@@ -1,0 +1,95 @@
+@use './../../../styles/variables.scss' as mixin;
+.form {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+.formInner {
+	@media (max-width: 767.98px) {
+		gap: 20px !important;
+	}
+}
+.title {
+	font-size: 32px !important;
+	margin: 0 !important;
+	color: #372e24 !important;
+
+	@media (max-width: 767.98px) {
+		text-align: center;
+	}
+}
+.checkbox {
+	font-size: 24px;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	justify-content: space-between;
+	text-align: left;
+	color: mixin.$main-text-color;
+
+	@media (max-width: 420px) {
+		font-size: 12px;
+	}
+
+	span {
+		padding: 0 !important;
+		border: none !important;
+
+		&:hover {
+			border: none !important;
+		}
+	}
+}
+:global .ant-checkbox-wrapper {
+	&::after {
+		content: none;
+	}
+}
+span :global .ant-checkbox-inner {
+	width: 34px !important;
+	height: 34px !important;
+	background: mixin.$input-background-color !important;
+	border: none !important;
+
+	border-color: mixin.$main-text-color !important;
+	&::after {
+		width: 14px !important;
+		height: 20px !important;
+
+		@media (max-width: 375px) {
+			height: 14px !important;
+			width: 10px !important;
+		}
+	}
+	&:hover {
+		border: none !important;
+	}
+
+	@media (max-width: 375px) {
+		width: 20px !important;
+		height: 20px !important;
+	}
+}
+span :global .ant-checkbox-checked:after {
+	border: none !important;
+
+	&::after {
+		border: none !important;
+	}
+}
+span :global .ant-checkbox-checked {
+	&::after {
+		background-color: black !important;
+	}
+	&:hover {
+		border: none !important;
+	}
+}
+.helperText {
+	padding: 0 10px;
+	color: #ff5050;
+	font-size: clamp(0.875rem, 0.735rem + 0.7vw, 1.25rem);
+	margin-top: 10px;
+	font-weight: 400 !important;
+}

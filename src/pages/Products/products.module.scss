@@ -1,0 +1,109 @@
+@use './../../styles/variables.scss' as mixin;
+.products {
+    padding: 47px 0 36px;
+}
+.productsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 60px;
+}
+.productsTitle {
+    font-size: 48px !important;
+    color: #372e24 !important;
+    margin: 0 !important;
+    width: 47%;
+}
+
+.dropwdownProducts {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: flex-end;
+    width: 47%;
+}
+.dropdownBtn {
+    font-size: 28px;
+    font-weight: 300 !important;
+    align-items: center;
+    gap: 14px;
+    width: 450px;
+    justify-content: end;
+    display: flex;
+    padding: 22px;
+    background: #f1dac5;
+
+    @media only screen and (max-width: 1400px) {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    @media only screen and (max-width: 991px) {
+        font-size: 16px;
+    }
+}
+.dropdownIcon {
+    transition: 0.2s linear;
+}
+.dropdownList {
+    background: #f1dac5;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 20;
+    top: 60px;
+
+    @media only screen and (max-width: 1400px) {
+        width: 100%;
+    }
+}
+.dropdownItem {
+    font-size: 24px;
+    padding: 25px 33px;
+    color: #624c34;
+    display: flex;
+    font-weight: 300 !important;
+    align-self: end;
+}
+.productsBody {
+    display: flex;
+    justify-content: space-between;
+    gap: 180px;
+    margin-top: 62px;
+}
+.productsCategories {
+    margin-top: 135px;
+}
+.categoryTitle {
+    font-size: 32px !important;
+    color: #372e24 !important;
+    font-weight: 500 !important;
+}
+
+.productsItem {
+    display: flex;
+    justify-content: space-between;
+    gap: 90px;
+}
+// Pagination
+.pagination {
+    margin-top: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+}
+.paginationItem {
+    font-size: 36px !important;
+    height: 90px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #372e24;
+    padding: 23px 38px;
+    border-radius: 100%;
+    background-color: mixin.$input-background-color;
+}

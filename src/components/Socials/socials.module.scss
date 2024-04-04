@@ -1,0 +1,32 @@
+.chatHelper {
+	display: flex;
+	align-self: end;
+	transition: 0.2s linear;
+	@media (any-hover: hover) {
+		&:hover {
+			& * {
+				fill: #120a03;
+				transition: 0.2s linear;
+			}
+		}
+	}
+	@media (max-width: 768px) {
+		svg {
+			width: 50px;
+		}
+	}
+}
+.socialsWrapper {
+	position: relative;
+	margin-bottom: 36px;
+}
+.socials {
+	display: flex;
+	position: relative;
+	right: -100px;
+	justify-content: end;
+
+	@media (max-width: 1919.98px) {
+		right: 0;
+	}
+}

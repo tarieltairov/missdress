@@ -1,0 +1,151 @@
+@use './../../../styles/variables.scss' as mixin;
+// Pagination
+.pagination {
+	margin-top: 53px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 17px;
+	margin-bottom: clamp(3.125rem, 0.916rem + 11.05vw, 9.063rem);
+}
+.paginationItem {
+	font-size: 36px !important;
+	max-width: 90px;
+	aspect-ratio: 1/1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #372e24;
+	padding: 23px 38px;
+	border-radius: 100%;
+	background-color: mixin.$input-background-color;
+}
+.paginationItemActive {
+	background-color: #372e24;
+	color: mixin.$input-background-color;
+}
+
+:global {
+	.ant-pagination {
+		font-size: 36px !important;
+		margin-top: 53px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 17px;
+		margin-bottom: clamp(3.125rem, 0.916rem + 11.05vw, 9.063rem);
+	}
+	.ant-pagination-options {
+		display: none !important;
+	}
+	.ant-pagination-item {
+		font-size: 36px !important;
+		max-width: 90px !important;
+		height: 90px !important;
+		aspect-ratio: 1/1 !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		color: #372e24;
+		padding: 23px 38px;
+		border-radius: 100%;
+		background-color: mixin.$input-background-color !important;
+		border: none !important;
+		border-radius: 45px !important;
+		margin: 0 !important;
+	}
+	.ant-pagination-item-active {
+		background-color: #372e24 !important;
+		color: mixin.$input-background-color !important;
+
+		a {
+			color: inherit !important;
+			padding: 0 !important;
+		}
+
+		&:hover {
+			border: none !important;
+		}
+	}
+	.ant-pagination-next {
+		margin: 0 !important;
+		width: 90px !important;
+		height: 90px !important;
+		border-radius: 45px !important;
+		display: flex !important;
+		align-items: center;
+		justify-content: center;
+		background-color: mixin.$input-background-color !important;
+		border-radius: 45px;
+		a {
+			display: flex !important;
+			justify-content: center;
+			align-items: center;
+			&:disabled {
+				fill: rgb(255, 0, 0) !important;
+				color: #372e24;
+			}
+		}
+	}
+
+	.ant-pagination-prev {
+		margin: 0 !important;
+		height: auto !important;
+		width: 90px !important;
+		height: 90px !important;
+		border-radius: 45px !important;
+		display: flex !important;
+		align-items: center;
+		justify-content: center;
+		background-color: mixin.$input-background-color !important;
+		border-radius: 45px;
+		a {
+			display: inline-flex !important;
+		}
+	}
+	.ant-pagination-disabled {
+		background: rgb(197, 197, 197) !important;
+	}
+	.ant-pagination-jump-next {
+		position: relative;
+		margin: 0 !important;
+		height: auto !important;
+		width: 90px !important;
+		height: 90px !important;
+		border-radius: 45px !important;
+		display: flex !important;
+		align-items: center;
+		justify-content: center;
+		background-color: mixin.$input-background-color !important;
+		border-radius: 45px;
+	}
+	.ant-pagination-jump-prev {
+		position: relative;
+		margin: 0 !important;
+		height: auto !important;
+		width: 90px !important;
+		height: 90px !important;
+		border-radius: 45px !important;
+		display: flex !important;
+		align-items: center;
+		justify-content: center;
+		background-color: mixin.$input-background-color !important;
+		border-radius: 45px;
+	}
+	.ant-pagination-item-link {
+		position: absolute;
+		top: 50% !important;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.ant-pagination-item-link-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #372e24 !important;
+	}
+	.ant-pagination-item-ellipsis {
+		position: static !important;
+	}
+}

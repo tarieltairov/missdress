@@ -1,0 +1,197 @@
+@use './../../styles/variables.scss' as mixin;
+
+.card {
+    padding: 30px 30px;
+
+    @media screen and (max-width: 768px) {
+        padding: 20px 20px;
+    }
+
+    @media screen and (max-width: 568) {
+        padding: 14px 14px;
+    }
+}
+
+.form {
+    &_header {
+        h1 {
+            font-weight: 600;
+            font-size: 48px;
+            color: #372e24;
+        }
+    }
+}
+
+.ordering_info {
+    display: flex;
+
+    &_item {
+        font-weight: 200 !important;
+
+        @media screen and (max-width: 768px) {
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 600px) {
+            font-size: 12px;
+        }
+    }
+
+    &_subitem {
+        @media screen and (max-width: 768px) {
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 600px) {
+            font-size: 12px;
+        }
+    }
+}
+.amount {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #372e24;
+    font-size: 40px;
+    color: #f1dac5;
+    font-weight: 300 !important;
+
+    @media screen and (max-width: 991px) {
+        height: 60px;
+        width: 60px;
+        font-size: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 30px;
+        width: 30px;
+        font-size: 14px;
+    }
+}
+
+.button_card_icons {
+    @media screen and (max-width: 991px) {
+        height: 30px !important;
+        width: 30px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 10px;
+        width: 10px;
+    }
+}
+
+.price {
+    color: #372e24;
+    text-align: right;
+
+    .currentPrice {
+        font-size: 48px;
+
+        @media screen and (max-width: 991px) {
+            font-size: 32px;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 24px;
+        }
+    }
+
+    .oldPrice {
+        font-size: 32px;
+        font-weight: 300 !important;
+        text-decoration: line-through;
+        @media screen and (max-width: 991px) {
+            font-size: 24px;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 14px;
+        }
+    }
+}
+
+.title {
+    font-size: 28px;
+    color: #372e24;
+
+    @media screen and (max-width: 991px) {
+        font-size: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    img {
+        @media screen and (max-width: 991px) {
+            height: 40px !important;
+            width: 40px !important;
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 24px !important;
+            width: 24px !important;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        height: 60px !important;
+        width: 60px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 30px !important;
+        width: 30px !important;
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: mixin.$buttonDark-text-color !important ;
+            color: mixin.$main-text-color !important;
+        }
+    }
+    &:disabled {
+        background-color: #a99783;
+        color: mixin.$buttonLight-text-color;
+    }
+}
+
+.image {
+    @media screen and (max-width: 991px) {
+        height: 250px;
+        width: 200px;
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 200px;
+        width: 150px;
+    }
+
+    @media screen and (max-width: 560px) {
+        height: 140px;
+        width: 100px;
+    }
+}
+
+.card_info {
+    row-gap: 16px;
+
+    @media screen and (max-width: 991px) {
+        row-gap: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        row-gap: 4px;
+    }
+}

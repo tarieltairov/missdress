@@ -1,0 +1,243 @@
+.swiperSlider {
+	height: 820px !important;
+
+	@media (max-width: 992px) {
+		height: 600px !important;
+	}
+	@media (max-width: 768px) {
+		height: 500px !important;
+	}
+	@media (max-width: 425px) {
+		height: 300px !important;
+	}
+	.swiper-pagination-bullets {
+		height: 80px !important;
+	}
+
+	@media (max-width: 375px) {
+		height: 180px !important;
+	}
+}
+
+.swiperSlide {
+	width: 100% !important;
+	height: 100% !important	;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+:global {
+	.swiper-pagination {
+		margin-bottom: clamp(0.313rem, -0.369rem + 3.41vw, 2.188rem);
+
+		@media (max-width: 375px) {
+			display: none !important;
+		}
+	}
+	.swiper-pagination-bullet.swiper-pagination-bullet-active {
+		background-color: #fff;
+		width: 14px;
+		height: 14px;
+	}
+	span.swiper-pagination-bullet {
+		width: 14px;
+		height: 14px;
+		opacity: 1;
+		background-color: #3c210a;
+	}
+	.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+	.swiper-pagination-horizontal.swiper-pagination-bullets
+		.swiper-pagination-bullet {
+		margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 7px);
+	}
+
+	.swiper-button-prev {
+		width: 78px !important;
+		height: 78px !important;
+	}
+	.swiper-button-next {
+		width: 78px !important;
+		height: 78px !important;
+	}
+}
+
+.slideProduct {
+	width: 150px !important;
+	height: 200px !important;
+}
+.slideProductImg {
+	width: 150px !important;
+	aspect-ratio: 0.75/1 !important;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.sliderBtn {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
+
+	@media (max-width: 1300px) {
+		flex-direction: row !important;
+		width: 100%;
+	}
+}
+.similarSlider {
+}
+.similarSliderBtn {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	z-index: 5;
+	left: 0;
+}
+.nextBtn {
+	padding: 25px 17px;
+
+	@media (max-width: 1300px) {
+		transform: rotate(-90deg);
+	}
+}
+.prevBtn {
+	padding: 24px 17px;
+
+	@media (max-width: 1300px) {
+		transform: rotate(-90deg);
+	}
+}
+.similarPrevBtn {
+	padding: 25px 17px;
+	position: absolute;
+	left: -80px;
+	transform: rotate(-90deg);
+
+	&:disabled {
+		* {
+			fill: red;
+			color: red;
+		}
+	}
+}
+.similarNextBtn {
+	padding: 25px 17px;
+	position: absolute;
+	right: -80px;
+	transform: rotate(-90deg);
+}
+
+/// Preview Image
+:global {
+	.ant-image-preview-img {
+		width: 600px;
+		aspect-ratio: 0.71/1;
+	}
+}
+.swiper-button-prev {
+	width: 78px !important;
+	height: 78px !important;
+}
+.swiper-button-next {
+	width: 78px !important;
+	height: 78px !important;
+}
+
+.swiperProduct {
+	height: 842px !important;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+
+	@media (max-width: 1300px) {
+		height: 200px !important;
+		width: 1000px !important;
+	}
+	@media (max-width: 1150px) {
+		width: 800px !important;
+	}
+}
+.slideProduct {
+	width: 150px !important;
+	height: 200px !important;
+}
+.slideProductImg {
+	width: 150px !important;
+	aspect-ratio: 0.75/1 !important;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.sliderBtn {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
+}
+.similarSliderBtn {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	z-index: 5;
+	left: 0;
+}
+.nextBtn {
+	padding: 25px 17px;
+}
+.prevBtn {
+	padding: 24px 17px;
+}
+.similarPrevBtn {
+	padding: 25px 17px;
+	position: absolute;
+	left: -80px;
+	transform: rotate(-90deg);
+
+	&:disabled {
+		* {
+			fill: red;
+			color: red;
+		}
+	}
+}
+.similarNextBtn {
+	padding: 25px 17px;
+	position: absolute;
+	right: -80px;
+	transform: rotate(-90deg);
+}
+
+/// Preview Image
+:global {
+	.ant-image-preview-img {
+		width: 600px;
+		aspect-ratio: 0.71/1;
+	}
+}

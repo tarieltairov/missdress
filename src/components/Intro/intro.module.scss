@@ -1,0 +1,58 @@
+@use './../../styles/variables.scss' as mixin;
+.intro {
+	position: relative;
+}
+.introTitle {
+	color: mixin.$buttonDark-text-color !important;
+	font-size: clamp(1.625rem, 0.761rem + 4.32vw, 4rem) !important;
+	margin: 0 !important;
+	font-weight: 400 !important;
+}
+.introContainer {
+	position: relative;
+}
+.introContent {
+	position: absolute;
+	bottom: 60px !important;
+	left: 0;
+	z-index: 5;
+	@media (max-width: 375px) {
+		bottom: 26px !important;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+.titleContainer {
+	margin-bottom: clamp(0.938rem, 0.006rem + 4.66vw, 3.5rem) !important;
+
+	@media (max-width: 375px) {
+		display: none;
+	}
+}
+.btnWrapper {
+	align-self: start;
+	display: flex;
+	width: clamp(15.625rem, 14.489rem + 5.68vw, 18.75rem);
+	justify-content: flex-start;
+}
+
+.discount {
+	text-align: center;
+	background-color: #372e24;
+	padding: 5px 5px 10px;
+	margin: 14px 0;
+	display: none;
+
+	@media (max-width: 375px) {
+		display: flex;
+	}
+}
+.discountTitle {
+	font-size: 20px !important;
+	margin: 0 !important;
+	color: mixin.$block-background-color !important;
+}
+.discountText {
+	font-size: 14px !important;
+	color: mixin.$block-background-color !important	;
+}

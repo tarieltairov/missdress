@@ -1,0 +1,24 @@
+.ordering {
+    padding: 60px 110px;
+
+    @media screen and (max-width: 991px) {
+        padding: 20px 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 0;
+    }
+
+    &_total {
+        background-color: #f1dac5;
+        padding: 16px;
+
+        h1 {
+            font-weight: 400;
+            font-size: 44px;
+        }
+    }
+}
+
+.amount {
+}

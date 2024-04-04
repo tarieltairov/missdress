@@ -1,0 +1,57 @@
+@use './../../styles/variables.scss' as mixin;
+.form {
+	color: rgb(219, 181, 147);
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	@media (max-width: 768px) {
+		justify-content: center;
+	}
+	@media (max-width: 425px) {
+		width: 100%;
+	}
+}
+.formTitle {
+	font-size: clamp(1.688rem, 1.478rem + 1.05vw, 2.25rem) !important;
+	color: mixin.$block-background-color !important;
+	margin-bottom: clamp(1.875rem, 0.596rem + 6.4vw, 5.313rem) !important;
+}
+.formInner {
+	margin-bottom: clamp(1.875rem, 0.596rem + 6.4vw, 5.313rem);
+	gap: clamp(1.25rem, 0.622rem + 3.14vw, 2.938rem) !important;
+}
+.select {
+	display: flex;
+	text-align-last: left;
+}
+:global {
+	div.ant-select-selector {
+		display: flex !important;
+		width: 100% !important;
+		height: 90px !important;
+		font-size: mixin.$select-size !important;
+		border-radius: mixin.$selectButton-borderRaduis !important;
+		background-color: mixin.$input-background-color !important;
+		padding: 28px 62px !important;
+		background: rgba(241, 218, 197, 0.8) !important;
+
+		&::placeholder {
+			color: mixin.$buttonLight-text-color;
+		}
+		&:focus {
+			border: 1px solid #402b1e;
+			box-shadow: 3px 3px 5px #402b1e;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				border: 1px solid #402b1e;
+			}
+		}
+	}
+}
+.btnWrapper {
+	width: clamp(18.125rem, 16.311rem + 9.07vw, 23rem);
+	margin: 0 auto;
+}

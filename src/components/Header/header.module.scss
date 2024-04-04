@@ -1,0 +1,138 @@
+@use './../../styles/variables.scss' as mixin;
+
+.header {
+    height: mixin.$header-height;
+    background-color: mixin.$header-background-color;
+    position: relative;
+    z-index: 200;
+    display: flex;
+
+    @media (max-width: 630px) {
+        height: 73px;
+    }
+}
+.body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    position: relative;
+
+    @media (max-width: 630px) {
+        height: 73px;
+    }
+}
+
+.headerMenu {
+    display: flex;
+    gap: clamp(1.25rem, -1.929rem + 4.35vw, 1.875rem);
+
+    @media (max-width: 1110px) {
+        display: none;
+    }
+}
+.headerActions {
+    display: flex;
+    gap: 30px;
+
+    @media (max-width: 500px) {
+        gap: 10px;
+    }
+}
+.headerAction {
+    cursor: pointer;
+}
+.iconItem {
+}
+.text {
+    margin: 0 !important;
+    font-size: 24px !important;
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        height: 3px;
+        background-color: #000;
+        width: 0;
+        transition: 0.2s linear;
+    }
+
+    @media (any-hover: hover) {
+        &:hover::after {
+            width: 100%;
+        }
+    }
+}
+.logoComponent {
+    @media (max-width: 500px) {
+        width: 20px !important;
+    }
+}
+.active {
+    margin: 0 !important;
+    font-size: 24px !important;
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        height: 3px;
+        background-color: #000;
+        width: 100%;
+        transition: 0.2s linear;
+    }
+}
+
+.activeIcon {
+    path {
+        fill: #20b930;
+    }
+}
+.headerAction {
+    cursor: pointer;
+}
+
+.headerLeft {
+    display: flex;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+    position: relative;
+    top: 60%;
+    z-index: 5;
+    transform: translateY(-50%);
+
+    @media (max-width: 630px) {
+        transform: translateY(-20%);
+        gap: 10px;
+    }
+}
+.logo {
+    z-index: 6000;
+    position: relative;
+    @media (max-width: 630px) {
+        width: 130px;
+    }
+}
+.burgerIcon {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 10px;
+    display: none;
+
+    @media (max-width: 1110px) {
+        display: flex;
+    }
+    @media (max-width: 630px) {
+        width: 30px;
+        height: 30px;
+        top: 20px;
+    }
+    @media (max-width: 500px) {
+        width: 20px;
+    }
+}

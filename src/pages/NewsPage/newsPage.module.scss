@@ -1,0 +1,7 @@
+.newsPage {
+	padding: clamp(3.125rem, 1.962rem + 5.81vw, 6.25rem) 0
+		clamp(0rem, -1.163rem + 5.81vw, 3.125rem);
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.875rem, 0.247rem + 8.14vw, 6.25rem);
+}

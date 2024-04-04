@@ -1,0 +1,68 @@
+@use './../../styles/variables.scss' as mixin;
+.menuWrapper {
+	width: 100vw;
+	height: 100vh;
+	top: 130px;
+	left: 0;
+	position: fixed;
+	z-index: 1900;
+	transform: translateX(-100%);
+	transition: 0.1s;
+
+	@media (max-width: 630px) {
+		top: 73px;
+	}
+}
+.menuWrapperActive {
+	transform: translateX(0);
+	width: 100vw;
+	height: 100vh;
+	top: 130px;
+	left: 0;
+	position: fixed;
+	z-index: 1900;
+	transition: 0.2s;
+
+	@media (max-width: 630px) {
+		top: 73px;
+	}
+}
+.blur {
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+}
+.menu {
+	width: 60%;
+	height: 100%;
+	background: mixin.$block-background-color;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.menuItem {
+	padding: clamp(0.625rem, 0.372rem + 1.27vw, 1.25rem) 20px;
+}
+.link {
+	color: #372e24;
+	font-size: clamp(0.875rem, 0.217rem + 3.29vw, 2.5rem);
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -3px;
+		left: 0;
+		height: 3px;
+		background-color: #000;
+		width: 0;
+		transition: 0.2s linear;
+	}
+
+	@media (any-hover: hover) {
+		&:hover::after {
+			width: 100%;
+		}
+	}
+}

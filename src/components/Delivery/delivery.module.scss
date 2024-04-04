@@ -1,0 +1,30 @@
+.title {
+	font-size: 48px !important;
+	color: #372e24 !important;
+	margin-bottom: 57px !important;
+
+	@media (max-width: 767.98px) {
+		margin-bottom: 30px !important;
+	}
+}
+.text {
+	font-size: 28px;
+	color: #372e24;
+	pointer-events: none;
+
+	@media (max-width: 767.98px) {
+		font-size: 16px;
+	}
+
+	p {
+		font-weight: 300 !important;
+
+		&:not(:last-child) {
+			margin-bottom: 40px;
+
+			@media (max-width: 767.98px) {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}

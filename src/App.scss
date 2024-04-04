@@ -1,0 +1,39 @@
+@use './styles/variables.scss' as mixin;
+
+body {
+    background-color: mixin.$main-background-color;
+}
+#root {
+    height: 100%;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+:where(.css-dev-only-do-not-override-yrsr6h).ant-menu-inline
+    > .ant-menu-submenu
+    > .ant-menu-submenu-title {
+    height: 55px;
+}
+
+.ant-menu-light:not(.ant-menu-horizontal) .ant-menu-submenu-title:hover {
+    background-color: inherit;
+}
+
+.ant-menu-light:not(.ant-menu-horizontal)
+    .ant-menu-item:not(.ant-menu-item-selected):hover {
+    background-color: inherit;
+}
+
+:where(.css-dev-only-do-not-override-yrsr6h).ant-menu-inline.ant-menu-root
+    .ant-menu-item
+    > .ant-menu-title-content,
+:where(.css-dev-only-do-not-override-yrsr6h).ant-menu-inline.ant-menu-root
+    .ant-menu-submenu-title
+    > .ant-menu-title-content {
+    flex: none;
+    margin-right: 20px;
+}

@@ -1,0 +1,30 @@
+@use './../../../styles/variables.scss' as mixin;
+
+.btn {
+	background-color: #402b1e;
+	border-radius: mixin.$selectButton-borderRaduis;
+	font-size: mixin.$button-size;
+	height: 90px;
+	color: mixin.$buttonDark-text-color;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	border-radius: 45px !important			;
+	@media (any-hover: hover) {
+		&:not([disabled]):hover {
+			background-color: mixin.$buttonDark-text-color !important ;
+			color: mixin.$main-text-color !important;
+		}
+	}
+	&:disabled {
+		background-color: #a99783;
+		color: mixin.$buttonLight-text-color;
+	}
+
+	@media (max-width: 420px) {
+		font-size: 14px;
+		height: 46px;
+	}
+}

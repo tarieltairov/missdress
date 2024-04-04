@@ -1,0 +1,71 @@
+.contacts {
+  max-width: 550px;
+}
+.contactsTitle {
+  font-size: 48px !important;
+  color: #372e24 !important;
+  margin-bottom: 57px !important;
+}
+.contactWrapper {
+  @media (max-width: 767.98px) {
+    align-items: center;
+  }
+}
+.contactsItem {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.telNumberWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 28px !important;
+  font-weight: 300 !important;
+
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+  a {
+    color: #372e24;
+  }
+}
+.telNumber {
+  font-size: 28px !important;
+  font-weight: 300 !important;
+  display: flex;
+  color: #372e24;
+  margin: 0 !important;
+  cursor: pointer;
+  @media (any-hover: hover) {
+    span {
+      @media (any-hover: hover) {
+        &:hover {
+        }
+      }
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @media (max-width: 520px) {
+    font-size: 20px !important;
+  }
+}
+.workDay {
+  font-size: 28px !important;
+  font-weight: 300 !important;
+  color: #372e24;
+  margin: 0 !important;
+  pointer-events: none;
+}
+
+.socialIcon {
+  transition: 0.2s linear;
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "missdress",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@reduxjs/toolkit": "^1.9.2",
+    "antd": "^5.2.0",
+    "axios": "^1.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.1",
+    "react-input-mask": "^3.0.0-alpha.2",
+    "react-redux": "^8.0.5",
+    "react-router": "^6.8.1",
+    "react-router-dom": "^6.8.1",
+    "redux-persist": "^6.0.0",
+    "swiper": "^9.0.5",
+    "vite-plugin-svgr": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-input-mask": "^2.0.4",
+    "@vitejs/plugin-react": "^3.1.0",
+    "sass": "^1.58.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}

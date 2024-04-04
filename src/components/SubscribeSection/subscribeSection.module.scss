@@ -1,0 +1,16 @@
+.subscribe {
+	display: flex;
+	background-image: url('./../../assets/img/mainPage/bg-pass.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: clamp(2.5rem, -0.872rem + 16.86vw, 11.563rem) 0;
+}
+.formWrapper {
+	display: flex;
+	justify-content: end;
+
+	@media (max-width: 768px) {
+		justify-content: center;
+	}
+}

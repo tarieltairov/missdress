@@ -1,0 +1,16 @@
+:where(.css-dev-only-do-not-override-yrsr6h).ant-menu-light:not(
+        .ant-menu-horizontal
+    )
+    .ant-menu-submenu-title:hover {
+    background-color: inherit;
+}
+
+:where(.css-dev-only-do-not-override-yrsr6h).ant-menu-light:not(
+        .ant-menu-horizontal
+    )
+    .ant-menu-item:not(.ant-menu-item-selected):hover {
+    background-color: inherit;
+}
+
+.custom_menu {
+}

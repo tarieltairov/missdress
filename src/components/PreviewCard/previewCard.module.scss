@@ -1,0 +1,51 @@
+@use './../../styles/variables.scss' as mixin;
+.card {
+	flex: 0 1 30%;
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	@media (max-width: 768px) {
+		flex: 0 1 47%;
+	}
+	@media (max-width: 374.98px) {
+		flex: 1 1 100%;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			.title {
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+.title {
+	text-align: center !important;
+	font-size: 32px !important;
+	color: mixin.$main-text-color;
+	position: relative;
+	margin-top: 22px;
+	margin: 0 auto !important;
+	&::after {
+		content: '';
+		width: 0;
+		position: absolute;
+		bottom: -3px;
+		left: 0;
+		height: 3px;
+		background-color: mixin.$main-text-color;
+		transition: 0.2s linear;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			color: mixin.$main-text-color;
+		}
+	}
+	@media (any-hover: hover) {
+		&:hover::after {
+			width: 100%;
+		}
+	}
+}

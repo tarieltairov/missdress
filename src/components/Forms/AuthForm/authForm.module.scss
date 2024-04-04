@@ -1,0 +1,40 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+.formInner {
+	@media (max-width: 767.98px) {
+		gap: 20px !important;
+	}
+}
+.title {
+	font-size: 32px !important;
+	margin: 0 !important;
+	color: #372e24 !important;
+	text-align: left;
+
+	@media (max-width: 767.98px) {
+		text-align: center;
+	}
+}
+.registerBtn {
+	color: #8d4f21;
+	font-size: 28px;
+
+	@media (any-hover: hover) {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	@media (max-width: 375px) {
+		font-size: 14px;
+	}
+}
+.helperText {
+	padding: 0 10px;
+	color: #ff5050;
+	font-size: clamp(0.875rem, 0.735rem + 0.7vw, 1.25rem);
+	margin-top: 10px;
+	font-weight: 400 !important;
+}

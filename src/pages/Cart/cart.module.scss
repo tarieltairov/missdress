@@ -1,0 +1,16 @@
+.cart_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty_cart {
+    padding: 120px 0;
+
+    h1 {
+        font-weight: 600;
+        font-size: 48px;
+        color: #372e24;
+    }
+}

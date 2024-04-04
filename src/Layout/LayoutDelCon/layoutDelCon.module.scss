@@ -1,0 +1,44 @@
+.blockWrapper {
+	margin-top: 11px;
+	padding: 50px 0 clamp(3.125rem, -49.122rem + 84.27vw, 12.5rem);
+	display: flex;
+	gap: clamp(6.25rem, -52.963rem + 95.51vw, 16.875rem);
+
+	@media (max-width: 767.98px) {
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		align-items: center;
+		gap: 50px;
+	}
+}
+
+.nav {
+	margin-top: 120px;
+
+	@media (max-width: 767.98px) {
+		margin-top: 50px;
+	}
+}
+.navList {
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+}
+.navItem {
+	font-size: 28px !important;
+	font-weight: 400 !important;
+	color: #372e24;
+	transition: 0.2s linear;
+	@media (any-hover: hover) {
+		&:hover {
+			color: #c6863f;
+		}
+	}
+}
+.navItemActive {
+	font-size: 28px !important;
+	font-weight: 400 !important;
+	color: #c6863f;
+	transition: 0.2s linear;
+}

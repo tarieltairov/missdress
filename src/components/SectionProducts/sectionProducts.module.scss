@@ -1,0 +1,28 @@
+@use './../../styles/variables.scss' as mixin;
+.section {
+}
+.sectionTitle {
+	text-align: center;
+	margin-bottom: clamp(1.25rem, -0.206rem + 6.21vw, 4.375rem) !important;
+	font-weight: 600 !important;
+	font-size: clamp(1.25rem, 0.435rem + 3.48vw, 3rem) !important;
+	line-height: 1 !important;
+	color: mixin.$main-text-color !important;
+}
+.sectionBody {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	margin-bottom: 50px;
+
+	@media (max-width: 1500px) {
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+	@media (max-width: 767.98px) {
+	}
+}
+.btnWrapper {
+	width: clamp(20rem, 16.773rem + 16.14vw, 28.875rem);
+	margin: 0 auto;
+}

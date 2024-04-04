@@ -1,0 +1,50 @@
+.orders {
+    padding: 60px 110px;
+
+    @media screen and (max-width: 991px) {
+        padding: 20px 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 0;
+    }
+    &_header {
+        display: flex;
+        align-items: center;
+        column-gap: 70px;
+
+        @media screen and (max-width: 991px) {
+            padding: 10px 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 16px;
+        }
+
+        &__order {
+            font-size: 48px;
+
+            @media screen and (max-width: 991px) {
+                font-size: 30px;
+            }
+
+            @media screen and (max-width: 768px) {
+                font-size: 16px;
+            }
+        }
+
+        &__delivered {
+            font-weight: 300 !important;
+            font-size: 32px;
+            color: #6a5844;
+
+            @media screen and (max-width: 991px) {
+                font-size: 24px;
+            }
+
+            @media screen and (max-width: 768px) {
+                font-size: 14px;
+            }
+        }
+    }
+}

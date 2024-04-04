@@ -1,0 +1,49 @@
+@use './../../styles/variables.scss' as mixin;
+
+.advantages {
+	padding: 73px 0 40px;
+	background: mixin.$block-background-color;
+}
+.advBody {
+	display: grid;
+	align-items: start;
+	grid-template-columns: repeat(4, 1fr);
+
+	@media (max-width: 1700px) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 50px !important;
+	}
+	@media (max-width: 800px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+.title {
+	color: #372e24 !important;
+	margin-bottom: clamp(1.875rem, 0.945rem + 4.65vw, 4.375rem) !important;
+	font-weight: 600 !important;
+	text-align: center;
+	font-size: clamp(1.875rem, 1.456rem + 2.09vw, 3rem);
+}
+.advItem {
+	text-align: center;
+}
+.itemTitle {
+	font-size: 36px !important;
+	font-weight: 500 !important;
+	color: #624c35 !important;
+	margin-bottom: 15px;
+
+	@media (max-width: 800px) {
+		font-size: 20px !important;
+	}
+}
+.itemText {
+	color: #8c6d4b;
+	font-size: 32px;
+
+	@media (max-width: 800px) {
+		font-size: 16px !important;
+	}
+}
