@@ -1,203 +1,65 @@
-import { Col, Row, Typography } from 'antd';
-import { FC } from 'react';
-import { ReactComponent as MinusIcon } from './../../assets/img/icons/minus.svg';
-import { ReactComponent as PlusIcon } from './../../assets/img/icons/plus.svg';
-import { ReactComponent as RemoveIcon } from './../../assets/img/icons/removeCart.svg';
-import styles from './basket.module.scss';
+import { Col, Row, Typography } from "antd";
+import { FC, useEffect, useState } from "react";
+import styles from "./basket.module.scss";
+import { IProduct } from "../../core/utils/products";
+import CartProduct from "./CartProduct";
+import ButtonUI from "../UI/Button";
+import { ReactComponent as Shop } from "../../assets/img/icons/shopping-bag.svg";
+import { setCart } from "../../core/redux/dataSlice";
+import { useAppDispatch } from "../../core/hooks/redux";
 
-const { Title, Text } = Typography;
+const Basket: FC = () => {
+  const [cartProducts, setCartsProduct] = useState<IProduct[]>([]);
+  const dispatch = useAppDispatch();
+  const [isBlured, setIsBlured] = useState(false);
 
-interface IBasketProps {
-	setVisible: (visible: boolean) => void;
-}
+  useEffect(() => {
+    const fromStorage = localStorage.getItem("cartProducts");
+    fromStorage && setCartsProduct(JSON.parse(fromStorage));
+  }, []);
 
-const Basket: FC<IBasketProps> = ({ setVisible }) => {
-	return (
-		<div className={styles.blur} onClick={() => setVisible(false)}>
-			<Col className={styles.body}>
-				<Row className={styles.cartItem} onClick={e => e.stopPropagation()}>
-					<div className={styles.cartImg}>
-						<img
-							src='https://cdn.shopify.com/s/files/1/0594/1506/8881/products/5849_1_Dolcezza-Red-Sweetheart-Maxi-Dress.jpg?v=1675244209&width=680'
-							alt=''
-						/>
-					</div>
-					<Row className={styles.cartInfo}>
-						<Row className={styles.cartHeader}>
-							<Title level={3} className={styles.title}>
-								Benito Kate Wrap Dress
-							</Title>
-							<button className={styles.removeItem}>
-								<RemoveIcon />
-							</button>
-						</Row>
-						<Row className={styles.properties}>
-							<Text className={`${styles.size} ${styles.props}`}>
-								Размер: 29-49
-							</Text>
-							<Text className={`${styles.color} ${styles.props}`}>
-								Цвет: Бежевый
-							</Text>
-						</Row>
-						<Row className={styles.cartFooter}>
-							<Row className={styles.countWrapper}>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<MinusIcon />
-								</button>
-								<Title
-									level={5}
-									className={`${styles.count} ${styles.countMain}`}
-								>
-									1
-								</Title>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<PlusIcon />
-								</button>
-							</Row>
-							<Title level={4} className={styles.price}>
-								5990
-							</Title>
-						</Row>
-					</Row>
-				</Row>
-				<Row className={styles.cartItem} onClick={e => e.stopPropagation()}>
-					<div className={styles.cartImg}>
-						<img
-							src='https://cdn.shopify.com/s/files/1/0594/1506/8881/products/5849_1_Dolcezza-Red-Sweetheart-Maxi-Dress.jpg?v=1675244209&width=680'
-							alt=''
-						/>
-					</div>
-					<Row className={styles.cartInfo}>
-						<Row className={styles.cartHeader}>
-							<Title level={3} className={styles.title}>
-								Benito Kate Wrap Dress
-							</Title>
-							<button className={styles.removeItem}>
-								<RemoveIcon />
-							</button>
-						</Row>
-						<Row className={styles.properties}>
-							<Text className={`${styles.size} ${styles.props}`}>
-								Размер: 29-49
-							</Text>
-							<Text className={`${styles.color} ${styles.props}`}>
-								Цвет: Бежевый
-							</Text>
-						</Row>
-						<Row className={styles.cartFooter}>
-							<Row className={styles.countWrapper}>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<MinusIcon />
-								</button>
-								<Title
-									level={5}
-									className={`${styles.count} ${styles.countMain}`}
-								>
-									1
-								</Title>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<PlusIcon />
-								</button>
-							</Row>
-							<Title level={4} className={styles.price}>
-								5990
-							</Title>
-						</Row>
-					</Row>
-				</Row>
-				<Row className={styles.cartItem} onClick={e => e.stopPropagation()}>
-					<div className={styles.cartImg}>
-						<img
-							src='https://cdn.shopify.com/s/files/1/0594/1506/8881/products/5849_1_Dolcezza-Red-Sweetheart-Maxi-Dress.jpg?v=1675244209&width=680'
-							alt=''
-						/>
-					</div>
-					<Row className={styles.cartInfo}>
-						<Row className={styles.cartHeader}>
-							<Title level={3} className={styles.title}>
-								Benito Kate Wrap Dress
-							</Title>
-							<button className={styles.removeItem}>
-								<RemoveIcon />
-							</button>
-						</Row>
-						<Row className={styles.properties}>
-							<Text className={`${styles.size} ${styles.props}`}>
-								Размер: 29-49
-							</Text>
-							<Text className={`${styles.color} ${styles.props}`}>
-								Цвет: Бежевый
-							</Text>
-						</Row>
-						<Row className={styles.cartFooter}>
-							<Row className={styles.countWrapper}>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<MinusIcon />
-								</button>
-								<Title
-									level={5}
-									className={`${styles.count} ${styles.countMain}`}
-								>
-									1
-								</Title>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<PlusIcon />
-								</button>
-							</Row>
-							<Title level={4} className={styles.price}>
-								5990
-							</Title>
-						</Row>
-					</Row>
-				</Row>
-				<Row className={styles.cartItem} onClick={e => e.stopPropagation()}>
-					<div className={styles.cartImg}>
-						<img
-							src='https://cdn.shopify.com/s/files/1/0594/1506/8881/products/5849_1_Dolcezza-Red-Sweetheart-Maxi-Dress.jpg?v=1675244209&width=680'
-							alt=''
-						/>
-					</div>
-					<Row className={styles.cartInfo}>
-						<Row className={styles.cartHeader}>
-							<Title level={3} className={styles.title}>
-								Benito Kate Wrap Dress
-							</Title>
-							<button className={styles.removeItem}>
-								<RemoveIcon />
-							</button>
-						</Row>
-						<Row className={styles.properties}>
-							<Text className={`${styles.size} ${styles.props}`}>
-								Размер: 29-49
-							</Text>
-							<Text className={`${styles.color} ${styles.props}`}>
-								Цвет: Бежевый
-							</Text>
-						</Row>
-						<Row className={styles.cartFooter}>
-							<Row className={styles.countWrapper}>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<MinusIcon />
-								</button>
-								<Title
-									level={5}
-									className={`${styles.count} ${styles.countMain}`}
-								>
-									1
-								</Title>
-								<button className={`${styles.countIcon} ${styles.countMain}`}>
-									<PlusIcon />
-								</button>
-							</Row>
-							<Title level={4} className={styles.price}>
-								5990
-							</Title>
-						</Row>
-					</Row>
-				</Row>
-			</Col>
-		</div>
-	);
+  useEffect(() => {
+    const handleScroll = () => {
+      const horizontalScrollPosition = window.pageYOffset;
+      setIsBlured(horizontalScrollPosition === 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    if (window.pageYOffset === 0) {
+      setIsBlured(true);
+    }
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div
+      className={`${styles.blur} ${isBlured && styles.blured}`}
+      onClick={() => dispatch(setCart(false))}
+    >
+      <Col className={styles.body}>
+        {cartProducts.length ? (
+          cartProducts.map((item) => (
+            <CartProduct
+              item={item}
+              key={item.id}
+              setCartsProduct={setCartsProduct}
+            />
+          ))
+        ) : (
+          <Row className={styles.cartItem}>
+            <div className={styles.empty_cart}>
+              <Shop className={styles.shopIcon} />
+              <Typography.Text className={styles.text}>
+                Ваша корзина пуста
+              </Typography.Text>
+              <ButtonUI>Продолжить покупки</ButtonUI>
+            </div>
+          </Row>
+        )}
+      </Col>
+    </div>
+  );
 };
 
 export default Basket;
