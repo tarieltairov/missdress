@@ -1,4 +1,4 @@
-import { Typography } from "antd";
+import { Badge, Typography } from "antd";
 import { useId, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as BurgerIcon } from "../../assets/img/icons/burgerIcon.svg";
@@ -41,6 +41,7 @@ const Header = () => {
   const [openRegister, setOpenRegister] = useState(false);
   const { cart } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+  const { favourite, cartProducts } = useAppSelector((s) => s.user);
 
   const onClickSearch = () => {
     setOpenSearch(!openSearch);
@@ -157,12 +158,16 @@ const Header = () => {
                   isActive ? styles.activeIcon : undefined
                 }
               >
-                <Heart className={styles.logoComponent} key={1} />
+                <Badge count={favourite.length}>
+                  <Heart className={styles.logoComponent} key={1} />
+                </Badge>
               </NavLink>
             </li>
             <li onClick={onClickCart} className={styles.headerAction}>
               <div className={`${cart ? styles.activeIcon : styles.iconItem}`}>
-                <Shop className={styles.logoComponent} key={2} />
+                <Badge count={cartProducts.length}>
+                  <Shop className={styles.logoComponent} key={2} />
+                </Badge>
               </div>
             </li>
             <li className={styles.headerAction}>

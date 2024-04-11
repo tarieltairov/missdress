@@ -9,16 +9,21 @@ import { ReactComponent as BeigeColor } from "./../../assets/img/icons/beigeColo
 import { ReactComponent as BlackColor } from "./../../assets/img/icons/blackColor.svg";
 import { ReactComponent as BlueColor } from "./../../assets/img/icons/blueColor.svg";
 import { ReactComponent as GreenColor } from "./../../assets/img/icons/greenColor.svg";
-// import { ReactComponent as FavIcon } from "./../../assets/img/icons/like.svg";
-import { ReactComponent as FavIcon } from "./../../assets/img/icons/heart.svg";
+import { ReactComponent as FavIcon } from "./../../assets/img/icons/like.svg";
+import { ReactComponent as HeartIcon } from "./../../assets/img/icons/heart.svg";
 
 import { ReactComponent as PinkColor } from "./../../assets/img/icons/pinkColor.svg";
 import { ReactComponent as PurpleColor } from "./../../assets/img/icons/purpleColor.svg";
 import { ReactComponent as RedColor } from "./../../assets/img/icons/redColor.svg";
 import styles from "./product.module.scss";
 import { IProduct, products } from "../../core/utils/products";
-import { useAppDispatch } from "../../core/hooks/redux";
-import { setCart } from "../../core/redux/dataSlice";
+import { useAppDispatch, useAppSelector } from "../../core/hooks/redux";
+import {
+  setAddToCart,
+  setAddToFavourite,
+  setCart,
+  setRemoveFromFavourite,
+} from "../../core/redux/dataSlice";
 
 interface IColors {
   id: number;
@@ -42,7 +47,39 @@ const Product = () => {
   const { id } = useParams();
   const [currentProduct, setCurrentProduct] = useState<IProduct>();
   const [sameTypeProducts, setSameTypeProducts] = useState<IProduct[]>();
-  const [isIntoCart, setIsIntoCart] = useState<boolean>(false);
+  const { favourite, cartProducts } = useAppSelector((state) => state.user);
+  const [isInFavourite, setIsInFavourite] = useState<boolean>(false);
+  const [isInCart, setIsInCart] = useState<boolean>(false);
+
+  useEffect(() => {
+    const check = favourite.some((i) => i.id === Number(id));
+    setIsInFavourite(check);
+  }, [favourite, id]);
+
+  useEffect(() => {
+    const check = cartProducts.some((i) => i.id === Number(id));
+    setIsInCart(check);
+  }, [cartProducts, id]);
+
+  const onToFavourite = () => {
+    if (currentProduct) {
+      dispatch(
+        isInFavourite
+          ? setRemoveFromFavourite(Number(id))
+          : setAddToFavourite(currentProduct)
+      );
+    }
+  };
+
+  const onToCart = () => {
+    if (currentProduct) {
+      if (isInCart) {
+        openCart();
+      } else {
+        dispatch(setAddToCart(currentProduct));
+      }
+    }
+  };
 
   useLayoutEffect(() => {
     const finded = products.find((item) => item.id === Number(id));
@@ -53,38 +90,7 @@ const Product = () => {
     setSameTypeProducts([...same, ...same]);
   }, [id]); // внутрь [] поставила id чтобы контент динамически менялся
 
-  useEffect(() => {
-    const cart = localStorage.getItem("cartProducts");
-    if (cart && currentProduct) {
-      const check = JSON.parse(cart).some(
-        (item: IProduct) => item.id === currentProduct.id
-      );
-      setIsIntoCart(check);
-    }
-  }, [currentProduct]);
-
-  const addToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cartProducts") || "[]");
-
-    // Проверяем, есть ли товары в корзине
-    if (cart.length > 0) {
-      // Проверяем, есть ли текущий товар уже в корзине
-      const isProductInCart = cart.some(
-        (item: IProduct) => item.id === currentProduct?.id
-      );
-      if (!isProductInCart) {
-        // Если текущий товар еще не в корзине, добавляем его
-        const updatedCart = [...cart, currentProduct];
-        localStorage.setItem("cartProducts", JSON.stringify(updatedCart));
-      }
-    } else {
-      // Если корзина пуста, сохраняем только текущий товар
-      localStorage.setItem("cartProducts", JSON.stringify([currentProduct]));
-    }
-    setIsIntoCart(true);
-  };
-
-  const onToCart = () => {
+  const openCart = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth", // Добавляем параметр behavior со значением 'smooth' для плавного перехода
@@ -112,8 +118,12 @@ const Product = () => {
                   <Text className={styles.property}>
                     Артикул : <span>{currentProduct?.vendorCode}</span>
                   </Text>
-                  <button>
-                    <FavIcon className={styles.favoriteIcon} />
+                  <button onClick={onToFavourite}>
+                    {isInFavourite ? (
+                      <FavIcon className={styles.favoriteIcon} />
+                    ) : (
+                      <HeartIcon className={styles.favoriteIcon} />
+                    )}
                   </button>
                 </div>
                 <Text className={styles.property}>
@@ -171,12 +181,8 @@ const Product = () => {
                       }}
                     ></p>
                   </Space>
-                  <ButtonUI
-                    onClick={() => {
-                      isIntoCart ? onToCart() : addToCart();
-                    }}
-                  >
-                    {isIntoCart ? "Перейти" : "Добавить"} в корзину
+                  <ButtonUI onClick={onToCart}>
+                    {isInCart ? "Перейти" : "Добавить"} в корзину
                   </ButtonUI>
                 </div>
               </div>
@@ -194,7 +200,9 @@ const Product = () => {
               </Title>
               <Text className={styles.productText}>{currentProduct?.desc}</Text>
             </Space>
-            <ButtonUI>Добавить в корзину</ButtonUI>
+            <ButtonUI onClick={onToCart}>
+              {isInCart ? "Перейти" : "Добавить"} в корзину
+            </ButtonUI>
           </div>
           <div className={styles.similarProducts}>
             <Title level={2}></Title>

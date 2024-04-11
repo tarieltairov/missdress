@@ -29,7 +29,9 @@ interface RouterData {
 const MainRoutes = () => {
   useEffect(() => {
     const check = localStorage.getItem("cartProducts");
+    const check2 = localStorage.getItem("favourite");
     localStorage.setItem("cartProducts", check ? check : JSON.stringify([]));
+    localStorage.setItem("favourite", check2 ? check2 : JSON.stringify([]));
   }, []);
 
   const PUBLIC_ROUTES: RouterData[] = [

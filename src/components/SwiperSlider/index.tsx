@@ -167,16 +167,7 @@ export const SimilarSlider: FC<ISimilarSliderProps> = ({
       >
         {sameTypeProducts?.map((item, index) => (
           <SwiperSlide className={styles.similarProduct} key={index}>
-            <ProductCard
-              img={item.image}
-              colors={7}
-              currentPrice={item.price}
-              oldPrice={item.oldPrice}
-              sizes={item.size}
-              title={item.title}
-              id={item.id}
-              rate={item.rate}
-            />
+            <ProductCard product={item} />
           </SwiperSlide>
         ))}
       </Swiper>

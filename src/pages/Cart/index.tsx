@@ -1,26 +1,27 @@
-import { useState } from 'react';
-import { SimilarSlider } from '../../components/SwiperSlider';
-import styles from './cart.module.scss';
+import styles from "./cart.module.scss";
+import Container from "../../Layout/Container/Container";
+import BodyProducts from "../../components/BodyProducts";
+import { useAppSelector } from "../../core/hooks/redux";
+import ButtonUI from "../../components/UI/Button";
+import { useNavigate } from "react-router";
 
-type Props = {};
-
-const Cart = (props: Props) => {
-    const [cart, setCart] = useState([]);
-    return (
-        <div className={styles.cart_wrapper}>
-            {cart.length ? (
-                <div></div>
-            ) : (
-                <div>
-                    <div className={styles.empty_cart}>
-                        <h1>Ваша корзина пуста</h1>
-                    </div>
-
-                    <div>{/* <SimilarSlider /> */}</div>
-                </div>
-            )}
+const Cart = () => {
+  const { cartProducts } = useAppSelector((state) => state.user);
+  const navigte = useNavigate();
+  return (
+    <div className={styles.cart_wrapper}>
+      <Container>
+        <BodyProducts title="Корзина" products={cartProducts} />
+      </Container>
+      {!!cartProducts.length && (
+        <div>
+          <ButtonUI onClick={() => navigte("/ordering")}>
+            Перейти к оформлению{" "}
+          </ButtonUI>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Cart;

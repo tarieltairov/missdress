@@ -8,6 +8,7 @@ import ProductCategories from "../../components/ProductCategories";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { MenuProps } from "antd";
 import { IProduct, products } from "../../core/utils/products";
+import { useAppSelector } from "../../core/hooks/redux";
 
 const { Title } = Typography;
 
@@ -174,16 +175,7 @@ const Products: FC = () => {
                       xl={12}
                       key={item.id}
                     >
-                      <ProductCard
-                        colors={7}
-                        currentPrice={item.price}
-                        img={item.image}
-                        sizes={item.size}
-                        title={item.title}
-                        oldPrice={item.oldPrice}
-                        id={item.id}
-                        rate={item.rate}
-                      />
+                      <ProductCard product={item} />
                     </Col>
                   ))
                 ) : (

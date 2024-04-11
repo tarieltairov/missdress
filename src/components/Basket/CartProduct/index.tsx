@@ -5,35 +5,38 @@ import { FC, useEffect, useState } from "react";
 import { ReactComponent as MinusIcon } from "./../../../assets/img/icons/minus.svg";
 import { ReactComponent as PlusIcon } from "./../../../assets/img/icons/plus.svg";
 import { ReactComponent as RemoveIcon } from "./../../../assets/img/icons/removeCart.svg";
+import { useAppDispatch } from "../../../core/hooks/redux";
+import { setCart, setRemoveFromCart } from "../../../core/redux/dataSlice";
+import { Link, useNavigate } from "react-router-dom";
 const { Title, Text } = Typography;
 
 interface IItem {
   item: IProduct;
-  setCartsProduct: (item: IProduct[]) => void;
 }
-const CartProduct: FC<IItem> = ({ item, setCartsProduct }) => {
+const CartProduct: FC<IItem> = ({ item }) => {
   const [price, setPrice] = useState(item.price);
   const [count, setCount] = useState<number>(1);
-
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const changeCount = (type: string) => {
     setCount((prev) => (type === "+" ? prev + 1 : prev > 1 ? prev - 1 : prev));
   };
 
   const removeCart = () => {
-    const updatedCart = JSON.parse(
-      localStorage.getItem("cartProducts") || ""
-    ).filter((card: IProduct) => card.id !== item.id);
-    localStorage.setItem("cartProducts", JSON.stringify(updatedCart));
-    window.location.reload();
+    dispatch(setRemoveFromCart(item.id));
   };
 
   useEffect(() => {
     setPrice(item.price * count);
   }, [count]);
 
+  const onToOrdering = () => {
+    dispatch(setCart(false));
+    navigate("/Cart");
+  };
   return (
     <Row className={styles.cartItem} onClick={(e) => e.stopPropagation()}>
-      <div className={styles.cartImg}>
+      <div onClick={onToOrdering} className={styles.cartImg}>
         <img src={item.image} alt="cart-image" />
       </div>
       <Row className={styles.cartInfo}>

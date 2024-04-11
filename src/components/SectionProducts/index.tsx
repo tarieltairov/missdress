@@ -1,24 +1,24 @@
-import Title from 'antd/es/typography/Title';
-import { FC } from 'react';
-import Container from '../../Layout/Container/Container';
-import ProductCard from '../ProductCard';
-import ButtonUI from '../UI/Button';
-import img01 from './../../assets/img/mainPage/categories/01.png';
-import styles from './sectionProducts.module.scss';
+import Title from "antd/es/typography/Title";
+import { FC } from "react";
+import Container from "../../Layout/Container/Container";
+import ProductCard from "../ProductCard";
+import ButtonUI from "../UI/Button";
+import img01 from "./../../assets/img/mainPage/categories/01.png";
+import styles from "./sectionProducts.module.scss";
 interface ISectionProductsProps {
-	sectionTitle: string;
+  sectionTitle: string;
 }
 
 const SectionProducts: FC<ISectionProductsProps> = ({ sectionTitle }) => {
-	return (
-		<section className={styles.section}>
-			<Container>
-				<>
-					<Title level={2} className={styles.sectionTitle}>
-						{sectionTitle}
-					</Title>
-					<div className={styles.sectionBody}>
-						<ProductCard
+  return (
+    <section className={styles.section}>
+      <Container>
+        <>
+          <Title level={2} className={styles.sectionTitle}>
+            {sectionTitle}
+          </Title>
+          <div className={styles.sectionBody}>
+            {/* <ProductCard
 							id={1}
 							colors={5}
 							currentPrice={2000}
@@ -37,15 +37,15 @@ const SectionProducts: FC<ISectionProductsProps> = ({ sectionTitle }) => {
 							oldPrice={6000}
 							sizes='25-60'
 							title='Sakinnurs'
-						/>
-					</div>
-					<div className={styles.btnWrapper}>
-						<ButtonUI>Смотреть все хиты</ButtonUI>
-					</div>
-				</>
-			</Container>
-		</section>
-	);
+						/> */}
+          </div>
+          <div className={styles.btnWrapper}>
+            <ButtonUI>Смотреть все хиты</ButtonUI>
+          </div>
+        </>
+      </Container>
+    </section>
+  );
 };
 
 export default SectionProducts;
