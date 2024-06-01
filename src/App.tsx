@@ -9,7 +9,9 @@ function App(): JSX.Element {
     <div className="App">
       <Header />
       <ScrollToTop />
-      <MainRoutes />
+      <div style={{ paddingTop: "130px" }}>
+        <MainRoutes />
+      </div>
       <Footer />
     </div>
   );
