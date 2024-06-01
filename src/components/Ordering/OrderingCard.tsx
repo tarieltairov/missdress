@@ -6,7 +6,11 @@ import xCircle from "../../assets/img/x_circle.svg";
 import OrderingButton from "./OrderingButton";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useAppDispatch } from "../../core/hooks/redux";
-import { setRemoveFromCart } from "../../core/redux/dataSlice";
+import {
+  setAddToCart,
+  setRemoveFromCart,
+  setUpdateCardToTalPrice,
+} from "../../core/redux/dataSlice";
 import { useEffect, useState } from "react";
 
 interface IOrderingCardProps {
@@ -49,6 +53,10 @@ const OrderingCard = ({
   useEffect(() => {
     setPrice(currentPrice * count);
   }, [count]);
+
+  useEffect(() => {
+    dispatch(setUpdateCardToTalPrice({ id, price }));
+  }, [id, price]);
 
   return (
     <Row

@@ -87,6 +87,7 @@ export interface IProduct {
   images: string[];
   rate: number;
   type: string;
+  totalPrice: number;
 }
 
 export const products: IProduct[] = [
@@ -106,6 +107,7 @@ export const products: IProduct[] = [
     images: [jeans11, jeans12, jeans13, jeans14],
     rate: 3,
     type: productsTypes.jeans,
+    totalPrice: 0,
   },
   {
     id: 2,
@@ -132,6 +134,7 @@ export const products: IProduct[] = [
     ],
     rate: 4,
     type: productsTypes.dress,
+    totalPrice: 0,
   },
   {
     id: 3,
@@ -158,6 +161,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.skirt,
+    totalPrice: 0,
   },
   {
     id: 4,
@@ -184,6 +188,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.jeans,
+    totalPrice: 0,
   },
   {
     id: 5,
@@ -210,6 +215,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.dress,
+    totalPrice: 0,
   },
   {
     id: 6,
@@ -236,6 +242,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.skirt,
+    totalPrice: 0,
   },
   {
     id: 7,
@@ -262,6 +269,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.jeans,
+    totalPrice: 0,
   },
   {
     id: 8,
@@ -288,6 +296,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.dress,
+    totalPrice: 0,
   },
   {
     id: 9,
@@ -314,6 +323,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.skirt,
+    totalPrice: 0,
   },
   {
     id: 10,
@@ -340,6 +350,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.jeans,
+    totalPrice: 0,
   },
   {
     id: 11,
@@ -366,6 +377,7 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.dress,
+    totalPrice: 0,
   },
   {
     id: 12,
@@ -392,5 +404,6 @@ export const products: IProduct[] = [
     ],
     rate: 2,
     type: productsTypes.skirt,
+    totalPrice: 0,
   },
 ];

@@ -5,34 +5,32 @@ import ButtonUI from "../../components/UI/Button";
 import Container from "../../Layout/Container/Container";
 import styles from "./ordering.module.scss";
 import { useAppSelector } from "../../core/hooks/redux";
+import { useEffect, useState } from "react";
 
 const Ordering = () => {
+  const discount = 30;
   const { cartProducts } = useAppSelector((s) => s.user);
-  const { orderer } = useAppSelector((s) => s.user);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [priceWithSale, setPriceWithSale] = useState(totalPrice);
+
+  useEffect(() => {
+    if (cartProducts) {
+      setTotalPrice(cartProducts.reduce((a, b) => a + b.totalPrice, 0));
+    }
+  }, [cartProducts]);
+
+  useEffect(() => {
+    if (totalPrice) {
+      setPriceWithSale(totalPrice - (totalPrice * discount) / 100);
+    }
+  }, [totalPrice, discount]);
+
   return (
     <Container>
       <div className={styles.ordering}>
         <Row gutter={[24, 24]} justify={"space-between"}>
           <Col xs={24} xl={15}>
-            {orderer.fullName ? (
-              <div>
-                <h1 style={{ fontSize: "30px" }}>Адрес доставки</h1>
-                <div>
-                  {Object.values(orderer).map((i) => (
-                    <p
-                      style={{
-                        fontSize: "20px",
-                        margin: "20px 0",
-                      }}
-                    >
-                      {i}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <OrderingForm />
-            )}
+            <OrderingForm />
           </Col>
           <Col xs={24} xl={8}>
             <div className={styles.ordering_total}>
@@ -52,19 +50,19 @@ const Ordering = () => {
                 <Col span={24}>
                   <Row justify={"space-between"}>
                     <Col>Общая сумма</Col>
-                    <Col>22500 c.</Col>
+                    <Col>{totalPrice}</Col>
                   </Row>
                 </Col>
                 <Col span={24}>
                   <Row justify={"space-between"}>
                     <Col>Скидка</Col>
-                    <Col>22500 c.</Col>
+                    <Col>{discount}%.</Col>
                   </Row>
                 </Col>
                 <Col span={24}>
                   <Row justify={"space-between"}>
                     <Col>Итог</Col>
-                    <Col>22500 c.</Col>
+                    <Col>{priceWithSale} c.</Col>
                   </Row>
                 </Col>
               </Row>

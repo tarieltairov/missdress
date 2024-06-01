@@ -70,6 +70,21 @@ const userSlice = createSlice({
     setOrderer: (state, { payload }) => {
       state.orderer = payload;
     },
+    setUpdateCardToTalPrice: (state, { payload }) => {
+      const products = JSON.parse(localStorage.getItem("cartProducts") || "");
+
+      // Находим текущий продукт по id и обновляем его totalPrice
+      const updatedProducts = products.map((product: IProduct) => {
+        if (product.id === payload.id) {
+          return { ...product, totalPrice: payload.price };
+        }
+        return product;
+      });
+
+      // Сохраняем обновленные продукты в localStorage
+      localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
+      state.cartProducts = updatedProducts;
+    },
   },
 });
 
@@ -81,6 +96,7 @@ export const {
   setRemoveFromCart,
   setOrderer,
   setSearch,
+  setUpdateCardToTalPrice,
 } = userSlice.actions;
 
 export default userSlice.reducer;
