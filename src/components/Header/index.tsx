@@ -1,6 +1,6 @@
 import { Badge, Typography } from "antd";
 import { useId, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as BurgerIcon } from "../../assets/img/icons/burgerIcon.svg";
 import { ReactComponent as Heart } from "../../assets/img/icons/heart.svg";
 import { ReactComponent as Logo } from "../../assets/img/icons/logoMiss.svg";
@@ -42,6 +42,7 @@ const Header = () => {
   const { cart } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const { favourite, cartProducts } = useAppSelector((s) => s.user);
+  const { pathname } = useLocation();
 
   const onClickSearch = () => {
     setOpenSearch(!openSearch);
@@ -141,15 +142,17 @@ const Header = () => {
             ))}
           </ul>
           <ul className={styles.headerActions}>
-            <li onClick={onClickSearch} className={styles.headerAction}>
-              <div
-                className={`${
-                  openSearch ? styles.activeIcon : styles.iconItem
-                }`}
-              >
-                <Search className={styles.logoComponent} key={0} />
-              </div>
-            </li>
+            {pathname === "/Products" && (
+              <li onClick={onClickSearch} className={styles.headerAction}>
+                <div
+                  className={`${
+                    openSearch ? styles.activeIcon : styles.iconItem
+                  }`}
+                >
+                  <Search className={styles.logoComponent} key={0} />
+                </div>
+              </li>
+            )}
             <li className={styles.headerAction}>
               <NavLink
                 onClick={onClickFavorite}
@@ -189,7 +192,7 @@ const Header = () => {
                 )}
               </div>
             </li>
-            {openSearch && (
+            {pathname === "/Products" && openSearch && (
               <SearchModal isOpen={openSearch} setIsOpen={setOpenSearch} />
             )}
             {openUser && <UserDrowdown />}

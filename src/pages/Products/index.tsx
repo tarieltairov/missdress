@@ -8,8 +8,8 @@ import ProductCategories from "../../components/ProductCategories";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { MenuProps } from "antd";
 import { IProduct, products } from "../../core/utils/products";
+import { useLocation } from "react-router";
 import { useAppSelector } from "../../core/hooks/redux";
-
 const { Title } = Typography;
 
 interface IDropdown {
@@ -80,8 +80,34 @@ const mobileItems: MenuItem[] = [
 const Products: FC = () => {
   const [dropdown, setDropdown] = useState<boolean>(false);
   const matches = useMediaQuery("(max-width: 1100px)");
+  const { state: category } = useLocation();
+  const { searchProduct } = useAppSelector((s) => s.user);
   const [changebleProducts, setChangebleProducts] =
     useState<IProduct[]>(products);
+
+  useEffect(() => {
+    onFilterSearch();
+  }, [searchProduct]);
+
+  // логика сортировки во время поиска
+  const onFilterSearch = () => {
+    if (searchProduct) {
+      setChangebleProducts(
+        products.filter((product) =>
+          Object.values(product).some((value) => {
+            if (typeof value === "string") {
+              return value.toLowerCase().includes(searchProduct.toLowerCase());
+            } else if (typeof value === "number") {
+              return value.toString().includes(searchProduct);
+            }
+            return false;
+          })
+        )
+      );
+    } else {
+      setChangebleProducts(products);
+    }
+  };
 
   const onSort = (type: string) => {
     if (type === "По цене") {
@@ -115,6 +141,7 @@ const Products: FC = () => {
                   Категория
                 </Title>
                 <ProductCategories
+                  locationCategory={category}
                   items={sideItems}
                   setChangebleProducts={setChangebleProducts}
                 />
@@ -124,6 +151,7 @@ const Products: FC = () => {
               <div className={styles.productsHeader}>
                 {matches ? (
                   <ProductCategories
+                    locationCategory={category}
                     items={mobileItems}
                     bgColor="#F1DAC5"
                     width={"48%"}

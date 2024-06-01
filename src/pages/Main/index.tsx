@@ -1,36 +1,35 @@
-import { Space, Typography } from 'antd';
+import { Space, Typography } from "antd";
 
-import styles from './main.module.scss';
+import styles from "./main.module.scss";
 
-import Advantages from '../../components/Advantages';
-import Categories from '../../components/Categories/Categories';
-import Collections from '../../components/Collections';
-import Intro from '../../components/Intro';
-import MenuBurger from '../../components/MenuBurger';
-import News from '../../components/News';
-import SectionProducts from '../../components/SectionProducts';
-import Socials from '../../components/Socials';
-import Subscribe from '../../components/SubscribeSection';
+import Advantages from "../../components/Advantages";
+import Categories from "../../components/Categories/Categories";
+import Collections from "../../components/Collections";
+import Intro from "../../components/Intro";
+import MenuBurger from "../../components/MenuBurger";
+import News from "../../components/News";
+import SectionProducts from "../../components/SectionProducts";
+import Socials from "../../components/Socials";
+import ModalRegister from "../../components/ModalRegister";
 
 const { Title, Text } = Typography;
 
 export const Main = () => {
-	return (
-		<>
-			{/* <ModalRegister /> */}
-			<Space direction='vertical' size={110} className={styles.mainWrapper}>
-				<Intro />
-				<Categories />
-				<SectionProducts sectionTitle='Хит продаж' />
-				<SectionProducts sectionTitle='Новинки' />
-				<Collections />
-				<Subscribe />
-				<Advantages />
-				<News />
-				<Socials />
-			</Space>
-		</>
-	);
+  return (
+    <>
+      {/* <ModalRegister /> */}
+      <Space direction="vertical" size={110} className={styles.mainWrapper}>
+        <Intro />
+        <Categories />
+        <SectionProducts sectionTitle="Хит продаж" />
+        <SectionProducts sectionTitle="Новинки" />
+        <Collections />
+        <Advantages />
+        <News />
+        <Socials />
+      </Space>
+    </>
+  );
 };
 
 export default Main;

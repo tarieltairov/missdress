@@ -13,6 +13,7 @@ interface UserState {
   cartProducts: IProduct[];
   favourite: IProduct[];
   orderer: FormData;
+  searchProduct: string;
 }
 
 const initialState: UserState = {
@@ -26,12 +27,16 @@ const initialState: UserState = {
     country: "",
     city: "",
   },
+  searchProduct: "",
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    setSearch: (state, { payload }) => {
+      state.searchProduct = payload;
+    },
     setCart: (state, { payload }) => {
       state.cart = payload;
     },
@@ -75,6 +80,7 @@ export const {
   setAddToCart,
   setRemoveFromCart,
   setOrderer,
+  setSearch,
 } = userSlice.actions;
 
 export default userSlice.reducer;

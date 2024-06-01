@@ -1,7 +1,7 @@
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 import { ConfigProvider, MenuProps } from "antd";
 import { Menu } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./productCategories.module.scss";
 import {
   IProduct,
@@ -15,6 +15,7 @@ type Props = {
   bgColor?: string;
   width?: number | string;
   setChangebleProducts: (products: any[]) => void;
+  locationCategory: keyof ProductsTypes;
 };
 
 const rootSubmenuKeys = ["sub1"];
@@ -24,8 +25,10 @@ const ProductCategories = ({
   bgColor = "inherit",
   width = 256,
   setChangebleProducts,
+  locationCategory,
 }: Props) => {
   const [openKeys, setOpenKeys] = useState([""]);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
   const onOpenChange: MenuProps["onOpenChange"] = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -36,11 +39,19 @@ const ProductCategories = ({
     }
   };
 
+  // логика того что когда мы переходим из главной по одной карточке из коллекции
+  useEffect(() => {
+    if (locationCategory) {
+      handleClick({ key: locationCategory });
+    }
+  }, [locationCategory]);
+
   //   функция для фильтрации по кактегории товаров
   const handleClick = ({ key }: { key: keyof ProductsTypes }) => {
     setChangebleProducts(
       products.filter((item) => item.type === productsTypes[key])
     );
+    setSelectedKeys([key]);
   };
 
   return (
@@ -80,6 +91,7 @@ const ProductCategories = ({
             />
           )
         }
+        selectedKeys={selectedKeys}
         items={items.map((item: any) => ({
           ...item,
           onClick: () => handleClick(item), // Добавляем обработчик события клика для каждого элемента меню
