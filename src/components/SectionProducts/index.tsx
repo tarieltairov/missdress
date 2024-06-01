@@ -5,11 +5,20 @@ import ProductCard from "../ProductCard";
 import ButtonUI from "../UI/Button";
 import img01 from "./../../assets/img/mainPage/categories/01.png";
 import styles from "./sectionProducts.module.scss";
+import { IProduct, products } from "../../core/utils/products";
+import { useNavigate } from "react-router";
 interface ISectionProductsProps {
   sectionTitle: string;
+  products: IProduct[];
+  mainBtn: string;
 }
 
-const SectionProducts: FC<ISectionProductsProps> = ({ sectionTitle }) => {
+const SectionProducts: FC<ISectionProductsProps> = ({
+  sectionTitle,
+  products,
+  mainBtn,
+}) => {
+  const navigate = useNavigate();
   return (
     <section className={styles.section}>
       <Container>
@@ -18,29 +27,15 @@ const SectionProducts: FC<ISectionProductsProps> = ({ sectionTitle }) => {
             {sectionTitle}
           </Title>
           <div className={styles.sectionBody}>
-            {/* <ProductCard
-							id={1}
-							colors={5}
-							currentPrice={2000}
-							img={img01}
-							oldPrice={6000}
-							sizes='25-60'
-							title='Envy Look All Season Skirt'
-						/>
-						<ProductCard
-							id={2}
-							colors={5}
-							currentPrice={2000}
-							img={
-								'https://m.media-amazon.com/images/I/51o-CqrxOgL._UL1056_.jpg'
-							}
-							oldPrice={6000}
-							sizes='25-60'
-							title='Sakinnurs'
-						/> */}
+            {products.map((item, index) => (
+              <ProductCard key={index} product={item} />
+            ))}
           </div>
-          <div className={styles.btnWrapper}>
-            <ButtonUI>Смотреть все хиты</ButtonUI>
+          <div
+            className={styles.btnWrapper}
+            onClick={() => navigate("/Products")}
+          >
+            <ButtonUI>Смотреть все {mainBtn}</ButtonUI>
           </div>
         </>
       </Container>
