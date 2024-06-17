@@ -4,15 +4,20 @@ import { OrderingCard, OrderingForm } from "../../components/Ordering";
 import ButtonUI from "../../components/UI/Button";
 import Container from "../../Layout/Container/Container";
 import styles from "./ordering.module.scss";
-import { useAppSelector } from "../../core/hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../core/hooks/redux";
 import { useEffect, useState } from "react";
+import { postOrderData } from "../../core/actions/order.actions";
+import { setClearAfterOrder } from "../../core/redux/dataSlice";
+import { useNavigate } from "react-router";
 
 const Ordering = () => {
+  const dispatch = useAppDispatch();
+  const { orderer, hasFullOrdererData } = useAppSelector((s) => s.user);
   const discount = 30;
   const { cartProducts } = useAppSelector((s) => s.user);
   const [totalPrice, setTotalPrice] = useState(0);
   const [priceWithSale, setPriceWithSale] = useState(totalPrice);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (cartProducts) {
       setTotalPrice(cartProducts.reduce((a, b) => a + b.totalPrice, 0));
@@ -24,6 +29,31 @@ const Ordering = () => {
       setPriceWithSale(totalPrice - (totalPrice * discount) / 100);
     }
   }, [totalPrice, discount]);
+
+  const sendOrder = () => {
+    if (!hasFullOrdererData) {
+      alert('Сначала заполните и сохраните все поля блока "Оформление заказа"');
+    } else {
+      const products = cartProducts.map((i) => ({
+        totalPrice: i.totalPrice,
+        title: i.title,
+        count: i.totalPrice / i.price,
+      }));
+      const data = {
+        aboutClient: orderer,
+        order: { products, priceWithSale, totalPrice },
+      };
+      console.log(data);
+
+      dispatch(postOrderData(data)).then(() => {
+        dispatch(setClearAfterOrder());
+        setTotalPrice(0);
+        setPriceWithSale(0);
+        alert("Ваш заказ принят в обработку!");
+        navigate("/Products");
+      });
+    }
+  };
 
   return (
     <Container>
@@ -72,7 +102,9 @@ const Ordering = () => {
                 }}
               />
               <div>
-                <ButtonUI height="75px">Оформить заказ</ButtonUI>
+                <ButtonUI height="75px" onClick={sendOrder}>
+                  Оформить заказ
+                </ButtonUI>
               </div>
             </div>
           </Col>

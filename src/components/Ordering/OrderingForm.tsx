@@ -47,8 +47,8 @@ const OrderingForm = () => {
         <div>
           <h2 style={{ fontSize: "40px" }}>Адрес доставки</h2>
           <Row justify={"space-between"} gutter={[0, 16]}>
-            {Object.values(orderer).map((i) => (
-              <Col xs={24} xl={11}>
+            {Object.values(orderer).map((i, index) => (
+              <Col xs={24} xl={11} key={index}>
                 <p
                   style={{
                     width: "100%",

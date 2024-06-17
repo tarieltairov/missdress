@@ -1,19 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../utils/products";
+import { OrderData } from "../actions/order.actions";
 
-type FormData = {
-  fullName: string;
-  street: string;
-  phoneNumber: string;
-  country: string;
-  city: string;
-};
 interface UserState {
   cart: boolean;
   cartProducts: IProduct[];
   favourite: IProduct[];
-  orderer: FormData;
+  orderer: OrderData;
   searchProduct: string;
+  hasFullOrdererData: boolean;
 }
 
 const initialState: UserState = {
@@ -28,6 +23,7 @@ const initialState: UserState = {
     city: "",
   },
   searchProduct: "",
+  hasFullOrdererData: false,
 };
 
 const userSlice = createSlice({
@@ -69,6 +65,7 @@ const userSlice = createSlice({
     },
     setOrderer: (state, { payload }) => {
       state.orderer = payload;
+      state.hasFullOrdererData = true;
     },
     setUpdateCardToTalPrice: (state, { payload }) => {
       const products = JSON.parse(localStorage.getItem("cartProducts") || "");
@@ -85,6 +82,18 @@ const userSlice = createSlice({
       localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
       state.cartProducts = updatedProducts;
     },
+    setClearAfterOrder: (state) => {
+      state.orderer = {
+        fullName: "",
+        street: "",
+        phoneNumber: "",
+        country: "",
+        city: "",
+      };
+      state.cartProducts = [];
+      state.hasFullOrdererData = false;
+      localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
+    },
   },
 });
 
@@ -97,6 +106,7 @@ export const {
   setOrderer,
   setSearch,
   setUpdateCardToTalPrice,
+  setClearAfterOrder,
 } = userSlice.actions;
 
 export default userSlice.reducer;

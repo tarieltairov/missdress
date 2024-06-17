@@ -28,8 +28,9 @@ const Collections = () => {
         <>
           <h3 className={styles.title}>Коллекция</h3>
           <div className={styles.collectionBody}>
-            {collections.map((collection) => (
+            {collections.map((collection, index) => (
               <Space.Compact
+                key={index}
                 direction="horizontal"
                 block
                 className={styles.collectionItem}
