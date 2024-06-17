@@ -43,8 +43,6 @@ const Ordering = () => {
         aboutClient: orderer,
         order: { products, priceWithSale, totalPrice },
       };
-      console.log(data);
-
       dispatch(postOrderData(data)).then(() => {
         dispatch(setClearAfterOrder());
         setTotalPrice(0);

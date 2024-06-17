@@ -29,8 +29,6 @@ export const postOrderData = createAsyncThunk(
   "users/postOrderData",
   async (data: IData) => {
     const response = await axios.post("http://localhost:3000/api/orders", data);
-    console.log(response);
-
     return response.data;
   }
 );
